@@ -18,6 +18,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
   <style>
     * {
@@ -812,6 +813,25 @@
         border-radius: 6px;
       }
 
+      .booking-form {
+        width: 95%;
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      .booking-form input,
+      .booking-form select {
+        font-size: 14px;
+      }
+
+      .form-buttons {
+        flex-direction: column;
+      }
+
+      .form-buttons button {
+        width: 100%;
+      }
+
     }
 
     /* HERO SECTION */
@@ -1028,6 +1048,101 @@
       border: none;
       cursor: pointer;
     }
+
+    /* Overlay */
+    .booking-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    /* Form Box */
+    .booking-form {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 380px;
+      animation: popupFade 0.3s ease;
+    }
+
+    .booking-form h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1E40AF;
+    }
+
+    /* Input group with icon */
+    .input-group {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748B;
+      font-size: 14px;
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 12px 12px 12px 38px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    /* Buttons */
+    .form-buttons {
+      margin-top: 10px;
+    }
+
+    .whatsapp-btn-form {
+      width: 100%;
+      padding: 12px;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: 0.3s;
+    }
+
+    .whatsapp-btn-form:hover {
+      background: #1ebe5d;
+    }
+
+    .close-btn {
+      width: 100%;
+      padding: 10px;
+      background: #ddd;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Animation */
+    @keyframes popupFade {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
   </style>
 
 
@@ -1080,7 +1195,7 @@
         <option>One Day Tour</option>
       </select>
 
-      <input type="date" id="travelDate" placeholder="Travel Date">
+      <input type="text" id="travelDate" placeholder="Select Travel Date">
       <input type="text" id="pickup" placeholder="Pickup Location">
       <input type="text" id="drop" placeholder="Drop Location">
       <input type="number" id="persons" placeholder="Number of Persons">
@@ -1337,10 +1452,10 @@
       <input type="hidden" id="tripName">
 
       <label>From Date</label>
-      <input type="date" id="fromDate">
+      <input type="text" id="fromDate" placeholder="Select From Date">
 
       <label>To Date</label>
-      <input type="date" id="toDate">
+      <input type="text" id="toDate" placeholder="Select To Date">
 
       <input type="number" id="tripPersons" placeholder="Number of Persons">
 
@@ -1735,6 +1850,25 @@ Please share package details & price.`;
       window.open(url, "_blank");
     }
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr("#travelDate", {
+      dateFormat: "d-m-Y",
+      minDate: "today"
+    });
+
+    flatpickr("#fromDate", {
+      dateFormat: "d-m-Y",
+      minDate: "today"
+    });
+
+    flatpickr("#toDate", {
+      dateFormat: "d-m-Y",
+      minDate: "today"
+    });
+  </script>
+
 
 
 </body>
